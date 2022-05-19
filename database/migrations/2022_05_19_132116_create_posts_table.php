@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('author', 50);
             $table->text('img_url');
             $table->text('description');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

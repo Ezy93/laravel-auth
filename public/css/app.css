@@ -12178,3 +12178,7 @@ fieldset:disabled .btn {
   }
 }
 
+div.col-12 div.card {
+  width: 18rem;
+}
+

@@ -1,5 +1,7 @@
 @extends('welcome')
 
 @section('guest-home')
-    <div class="top-left">Registarti e accedi prima di procedere</div>
+    <div>
+        <h3>Registarti e accedi prima di procedere</h3>
+    </div>
 @endsection

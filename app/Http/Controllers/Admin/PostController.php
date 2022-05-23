@@ -50,9 +50,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('admin.posts.show', compact('post'));
+        $post = Post::findOrFail($id);
+        return view('admin.show', compact('post'));
     }
 
     /**

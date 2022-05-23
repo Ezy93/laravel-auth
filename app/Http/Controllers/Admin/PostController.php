@@ -62,9 +62,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.edit',compact('post'));
     }
 
     /**
@@ -74,9 +74,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validation([
+            'title'=> 'required|max:50',
+            'author'=> 'required|max:50',
+            'description'=>'required'
+        ]);
+
+        $data = $request->all();
+        $post->udate($data);
+        return redirect()->route('posts.show',$post->id)->with('message', 'post updated correctly');
     }
 
     /**

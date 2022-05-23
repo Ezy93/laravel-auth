@@ -76,15 +76,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validation([
+        $request->validate([
             'title'=> 'required|max:50',
             'author'=> 'required|max:50',
             'description'=>'required'
         ]);
 
         $data = $request->all();
-        $post->udate($data);
-        return redirect()->route('posts.show',$post->id)->with('message', 'post updated correctly');
+        $post->update($data);
+        return redirect()->route('admin.posts.show',$post->id)->with('message', 'post updated correctly');
     }
 
     /**
@@ -96,6 +96,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('message', $post->title.' delete corretly');
     }
 }

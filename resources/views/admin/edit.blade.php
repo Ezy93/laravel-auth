@@ -3,19 +3,19 @@
 @section('title','edit-post')
 
 @section('content')
-<div class="container_fluid">
+<div class="container">
 	<div class="row">
 		<div class="col-12 mb-3">
-			<a href="{{ route('posts.index') }}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Post-index</a>
+			<a href="{{ route('admin.posts.index') }}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Post-index</a>
 		</div>
 	</div>
 
-    <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("cars.update", $car )}}" method="POST">
+    <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.posts.update", $post )}}" method="POST">
         @csrf
 		@method('PUT')
         <div class="col">
             <h2>
-                Creazione nuovo post
+                Edit post
             </h2>
             @if ( $errors->any() )
             <ul class="alert alert-danger">

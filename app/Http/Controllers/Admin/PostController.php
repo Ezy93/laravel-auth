@@ -30,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -41,7 +41,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=> 'unique|max:50',
+            'author' => 'max:50',
+        ]);
+        $data = $request->all();
+        $post =new Post();
+        $post->fill($data);
+        $post->save();
+
+        return redirect()->route('admin.posts.show', $post->id)->with('message', $post->title.' created correctly');
     }
 
     /**
